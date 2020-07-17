@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SitedetailPage = () => {
+const SiteDetailPage = () => {
     return (
         <div>
             Detail Page
@@ -8,4 +8,4 @@ const SitedetailPage = () => {
     )
 }
 
-export default SitedetailPage;
+export default SiteDetailPage;

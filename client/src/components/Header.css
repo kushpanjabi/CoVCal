@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.title {
+    margin-left: 38%;
+    font-size: 30px;
+}
+
+/* tablets */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .title {
+        margin-left: 25%;
+        font-size: 35px;
+    }
+}
+
+/* larger screens */
+
+@media screen and (min-width: 1024px) {
+    .title {
+        margin-left: 33%;
+        font-size: 40px;
+    }
+}
