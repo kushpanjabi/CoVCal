@@ -24,7 +24,11 @@ const SiteList = () => {
     }
 
     const handleUpdate = (id) => {
-        history.push(`/sites/${id}/update`)
+        history.push(`/sites/${id}/update`);
+    }
+
+    const handleSiteSelect = (id) => {
+        history.push(`/sites/${id}`);
     }
 
     async function getSites() {
@@ -55,10 +59,10 @@ const SiteList = () => {
             {sites && sites.map(site => {
                 return (
                     <tr key={site.id}>
-                    <td>{site.name}</td>
+                    <td onClick={() => handleSiteSelect(site.id)}>{site.name}</td>
                     <td>{site.location}</td>
                     <td>{"$".repeat(site.price_range)}</td>
-                    <td>Ratings</td>
+                    <td onClick={() => handleSiteSelect(site.id)}>Ratings</td>
                     <td onClick={() => handleUpdate(site.id)}>Edit</td>
                     <td onClick={() =>handleDelete(site.id)}>Delete</td>
                 </tr>

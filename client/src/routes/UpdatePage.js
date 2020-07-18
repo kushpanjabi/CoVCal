@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import './UpdatePage.css';
+import UpdateSite from '../components/UpdateSite';
 
 const UpdatePage = () => {
     return (
         <div>
-            Update Page
+            <UpdateSite />
         </div>
     )
 }

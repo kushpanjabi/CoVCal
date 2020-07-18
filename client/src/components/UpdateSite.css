@@ -1,13 +1,6 @@
 .full-form{
-    margin-left: 40%;
+    margin-left: 36%;
 }
-
-.form-inline {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-  }
-  
   /* Style the input fields */
   .form-inline input {
     vertical-align: middle;
