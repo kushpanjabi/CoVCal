@@ -99,6 +99,23 @@ app.delete('/sites/:id', async (req, res) => {
     }
 });
 
+// Add a review
+
+app.post('/sites/:id/addReview', async (req, res) => {
+    try {
+        const newReview = await db.query('INSERT INTO reviews (site_id, name, review, rating) values ($1, $2, $3, $4) returning *', [req.params.id, req.body.name, req.body.review, req.body.rating]);
+        console.log(newReview);
+        res.status(201).json({
+            status: "Success",
+            data: {
+                review: newReview.rows[0]
+            }
+        });
+    } catch (err) {
+        console.log(err);
+    }
+})
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

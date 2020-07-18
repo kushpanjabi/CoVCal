@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import './AddReview.css';
+import { useParams } from 'react-router-dom';
 
 
 const AddReview = () => {
-
+    const { id } = useParams();
     const [name, setName] = useState('');
     const [reviewText, setReviewText] = useState('');
     const [rating, setRating] = useState('Rating');
+
+    const handleSubmitReview = async (e) => {
+        e.preventDefault();
+        try {
+            const body = { name, review: reviewText, rating };
+            const response = await fetch(`http://localhost:5000/sites/${id}/addReview`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            }); 
+            window.location = `/sites/${id}`;
+            console.log(response);
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     return (
         <div className="center-and-space">
@@ -21,7 +38,7 @@ const AddReview = () => {
                         <option value="5">5</option>
                     </select>
                     <textarea value={reviewText} onChange={e => setReviewText(e.target.value)}type="text" placeholder="Tell us about your experience!" name="review" />
-                <button type="submit">Submit</button>
+                <button onClick={handleSubmitReview}>Submit</button>
             </form>
         </div>
         
