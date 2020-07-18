@@ -1,0 +1,16 @@
+.w3-card-4 {
+    max-width: 50;
+    margin: 10%;
+}
+
+.name-card{
+    font-size: 18px;
+}
+
+/* larger screens */
+
+@media screen and (min-width: 1024px) {
+    .name-card{
+        font-size: 22px;
+    }
+  }

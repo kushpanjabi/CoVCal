@@ -10,7 +10,8 @@ const SiteList = () => {
 
     let history = useHistory();
 
-    async function handleDelete(id) {
+    async function handleDelete(e, id) {
+        e.stopPropagation();
         try { 
             await fetch(`http://localhost:5000/sites/${id}`, {
                 method: "DELETE",
@@ -23,7 +24,8 @@ const SiteList = () => {
         }
     }
 
-    const handleUpdate = (id) => {
+    const handleUpdate = (e, id) => {
+        e.stopPropagation();
         history.push(`/sites/${id}/update`);
     }
 
@@ -58,13 +60,13 @@ const SiteList = () => {
         <tbody>
             {sites && sites.map(site => {
                 return (
-                    <tr key={site.id}>
-                    <td onClick={() => handleSiteSelect(site.id)}>{site.name}</td>
+                    <tr onClick={() => handleSiteSelect(site.id)} key={site.id}>
+                    <td>{site.name}</td>
                     <td>{site.location}</td>
                     <td>{"$".repeat(site.price_range)}</td>
-                    <td onClick={() => handleSiteSelect(site.id)}>Ratings</td>
-                    <td onClick={() => handleUpdate(site.id)}>Edit</td>
-                    <td onClick={() =>handleDelete(site.id)}>Delete</td>
+                    <td>Ratings</td>
+                    <td onClick={(e) => handleUpdate(e, site.id)}>✍🏼</td>
+                    <td onClick={(e) =>handleDelete(e, site.id)}>🗑</td>
                 </tr>
                 )
 

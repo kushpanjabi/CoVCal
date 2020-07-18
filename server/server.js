@@ -31,14 +31,16 @@ app.get('/sites', async (req, res) => {
 app.get('/sites/:id', async (req, res) => {
     console.log(req.params);
     try {
-        const results = await db.query(`SELECT * from sites WHERE id=$1`, [req.params.id]);
+        const sites = await db.query(`SELECT * from sites WHERE id=$1`, [req.params.id]);
+        const reviews = await db.query(`SELECT * from reviews WHERE site_id=$1`, [req.params.id]);
+
         res.status(200).json({
             status: "Success",
             data: {
-                site: results.rows[0],
+                site: sites.rows[0],
+                reviews: reviews.rows
             }
         })
-        console.log(results.rows);
     } catch (err) {
         console.log(err)
     }
