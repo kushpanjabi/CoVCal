@@ -1,12 +1,13 @@
 import React, {useEffect, useContext } from 'react';
-import './SiteList.css'
+import './SiteList.css';
 import { SitesContext } from '../context/SitesContext';
 import { useHistory } from 'react-router-dom';
+import StarRating from './StarRating';
 
 
-const SiteList = () => {
+const SiteList = (props) => {
 
-    const { sites, setSites } = useContext(SitesContext)
+    const { sites, setSites } = useContext(SitesContext);
 
     let history = useHistory();
 
@@ -22,28 +23,37 @@ const SiteList = () => {
         } catch (err) {
             console.log(err);
         }
-    }
+    };
 
     const handleUpdate = (e, id) => {
         e.stopPropagation();
         history.push(`/sites/${id}/update`);
-    }
+    };
 
     const handleSiteSelect = (id) => {
         history.push(`/sites/${id}`);
-    }
+    };
+
+    const renderRating = (site) => {
+        if (!site.count) {
+            return<span>0 reviews</span>
+        }
+        return (
+            <><StarRating rating={site.average_rating} />
+            <span>({site.count})</span>
+        </> 
+        );
+    };
 
     async function getSites() {
         const res = await fetch('http://localhost:5000/sites');
         const sitesArray = await res.json();
         setSites(sitesArray.data.site);
-    }
+    };
 
     useEffect(() => {
         getSites();
     },[])
-
-    console.log(sites);
 
     return (
     <table className="content-table">
@@ -64,7 +74,7 @@ const SiteList = () => {
                     <td>{site.name}</td>
                     <td>{site.location}</td>
                     <td>{"$".repeat(site.price_range)}</td>
-                    <td>Ratings</td>
+                    <td>{renderRating(site)}</td>
                     <td onClick={(e) => handleUpdate(e, site.id)}>✍🏼</td>
                     <td onClick={(e) =>handleDelete(e, site.id)}>🗑</td>
                 </tr>

@@ -4,6 +4,7 @@ import { SitesContext } from '../context/SitesContext';
 import './SiteDetailPage.css';
 import Reviews from '../components/Reviews';
 import AddReview from '../components/AddReview';
+import StarRating from '../components/StarRating';
 
 
 const SiteDetailPage = () => {
@@ -29,6 +30,9 @@ const SiteDetailPage = () => {
             {selectedSite && (
                 <>
                 <h1 className="centr">{selectedSite.site.name}</h1>
+                <div className="centr">
+                    <StarRating rating={selectedSite.site.average_rating} />
+                </div>
                 <div>
                     <Reviews reviews={selectedSite.reviews} />
                 </div>
