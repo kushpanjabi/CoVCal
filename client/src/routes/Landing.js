@@ -12,11 +12,12 @@ const Landing = () => {
                 <h1>CovCal Los Angeles</h1>
             </header>
             <section>
-            <h3>Find a testing site, see reviews and other experiences, and leave your own review!</h3><br/>
+            <h3>Find a testing site, see reviews and other experiences, and leave your own review!</h3>
             <p>By sharing the locations and experiences of testing sites, we can encourage more Angelenos to get tested and keep LA safer.</p>
             </section>
 
             <section>
+            <p className="p-small">To view ratings and reviews, click on the name of a testing site. Here, you can even add your own review!</p>
             <button className="enter-btn"><Link className="link-text" to ='/home'>Start</Link></button>
             </section>
         </main>
