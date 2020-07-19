@@ -12,12 +12,12 @@ const Landing = () => {
                 <h1>CovCal Los Angeles</h1>
             </header>
             <section>
-            <h3>Find a testing site, see reviews and other experiences, and leave your own review!</h3>
-            <p>By sharing the locations and experiences at testing sites, we can encourage more Angelenos to get tested and keep LA safer.</p>
+            <h3>Find a testing site, see reviews and other experiences, and leave your own review!</h3><br/>
+            <p>By sharing the locations and experiences of testing sites, we can encourage more Angelenos to get tested and keep LA safer.</p>
             </section>
 
             <section>
-            <button className="enter-btn"><Link className="link-text" to ='/home'>Enter</Link></button>
+            <button className="enter-btn"><Link className="link-text" to ='/home'>Start</Link></button>
             </section>
         </main>
         <footer className="bg-dark"><p>©2020 KP Labs, Inc.</p></footer>

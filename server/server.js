@@ -13,12 +13,12 @@ app.use(cors());
 app.get('/sites', async (req, res) => {
     try {
         const results = await db.query("SELECT * from sites");
-        console.log(results.rows);
+        const siteRatingsData = await db.query('select * from sites left join (select site_id, COUNT(*), TRUNC(AVG(rating),1) as average_rating from reviews group by site_id) reviews on sites.id = reviews.site_id;');
         res.json({
             status: "Success",
             results: results.rows.length,
             data: {
-                site: results.rows
+                site: siteRatingsData.rows
             }
         });
     } catch (err) {
@@ -31,7 +31,7 @@ app.get('/sites', async (req, res) => {
 app.get('/sites/:id', async (req, res) => {
     console.log(req.params);
     try {
-        const sites = await db.query(`SELECT * from sites WHERE id=$1`, [req.params.id]);
+        const sites = await db.query(`select * from sites left join (select site_id, COUNT(*), TRUNC(AVG(rating),1) as average_rating from reviews group by site_id) reviews on sites.id = reviews.site_id where id = $1;`, [req.params.id]);
         const reviews = await db.query(`SELECT * from reviews WHERE site_id=$1`, [req.params.id]);
 
         res.status(200).json({
