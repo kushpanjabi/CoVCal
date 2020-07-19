@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .body-landing {
+    font-family: "Open Sans",
+    sans-serif; 
+    font-size: 20px;
+    color: #444;
+    text-align: center;
+    line-height: 1.5;
+  }
+  
+  nav,
+  footer {
+    padding: 1% 0;
+    background-color: #aaa;
+  }
+  
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+  
+  
+  
+  header {
+    padding: 12% 0;
+  }
+
+  header h1 {
+      color: rgb(255, 255, 255);
+      font-family: 'Lato', sans-serif;
+  }
+
+  section h3 {
+    color: rgb(255, 255, 255);
+    font-family: 'Lato', sans-serif;
+  }
+
+  section p { 
+    color: rgb(255, 255, 255);
+    font-family: 'Lato', sans-serif;
+  }
+  
+  section {
+    min-height: 200px;
+    padding: 6% 0;
+    background-color: #333;
+  }
+  
+  section:nth-child(odd) {
+    background-color: #333;
+  }
+  
+  .bg-dark {
+    background: rgb(0, 0, 0);
+    color: #f4f4f4;
+  }
+
+  .link-text {
+      text-decoration: none;
+  }
+
+  .banner-photo {
+      background-image: url(https://miro.medium.com/max/1024/0*Udo4FdHNLRP5qflh.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 1.2;
+      
+  }

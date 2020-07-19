@@ -15,7 +15,7 @@ const AddSite = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
             }); 
-            window.location = '/';
+            window.location = '/home';
             console.log(response);
         } catch (err) {
             console.log(err);
